@@ -1,35 +1,44 @@
 package Pages;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 
 public class RegistrationPage extends PageObject{
 	
-	@FindBy(xpath="//input[@id='name']")
-	private WebElement NameXpath;
+	@FindBy(xpath="//div[@class='field name-firstname']//div//input[@id='firstname']")
+	private WebElement FirstnameXpath;
 	
-	@FindBy(xpath="//input[@id='company']")
-	private WebElement ComapanyXpath;
+	@FindBy(xpath="//input[@id='lastname']")
+	private WebElement LastnameXpath;
 	
-	@FindBy(xpath="//input[@id='email']")
+	@FindBy(xpath="//input[@id='email_address']")
 	private WebElement EmailXpath;
 	
 	@FindBy(xpath="//input[@id='password']")
 	private WebElement PasswordXpath;
 	
-	@FindBy(xpath="//input[@id='password-confirm']")
+	@FindBy(xpath="//input[@id='confirmation']")
 	private WebElement CnfPasswordXpath;
 	
-	@FindBy(xpath="//button[contains(text(),'Register')]")
-	private WebElement RegisterButton;
+	@FindBy(xpath="//input[@id='is_subscribed_account']")
+	private WebElement SignUpCheckBoxXpath;
 	
-	public void enterName(String Name) {
-		NameXpath.sendKeys(Name);
+	@FindBy(xpath="//button[@id='submit-create']")
+	private WebElement RegisterSubmitButton;
+	
+	@FindBy(xpath = "//div[@class='recaptcha']//div[contains(@id,'advice-required-entry')]")
+	private WebElement VerifyRegistrationXpath;
+	
+	public void enterFirstname(String Firstname) {
+		FirstnameXpath.sendKeys(Firstname);
 	}
 	
-	public void enterCompany(String Company) {
-		ComapanyXpath.sendKeys(Company);
+	public void enterLastname(String Lastname) {
+		LastnameXpath.sendKeys(Lastname);
 	}
 	
 	public void enterEmail(String Email) {
@@ -44,7 +53,16 @@ public class RegistrationPage extends PageObject{
 		CnfPasswordXpath.sendKeys(CnfPassword);
 	}
 	
-	public void ClickRegisterButton() {
-		RegisterButton.click();
+	public void CheckSignUp() {
+		SignUpCheckBoxXpath.click();
+	}
+	
+	public void ClickRegisterSubmitButton() {
+		RegisterSubmitButton.click();
+	}
+	
+	public String verifyRegistration() {
+		new WebDriverWait(getDriver(), 10).until(ExpectedConditions.elementToBeClickable(VerifyRegistrationXpath));
+		return VerifyRegistrationXpath.getText();
 	}
 }

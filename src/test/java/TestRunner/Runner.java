@@ -7,7 +7,7 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-		 features = "Resources/Features/Login.feature",
+		 features = "Resources/Features/MyAccount_AddAddress.feature",
 		 glue= {"StepDefinitions"},
 		 plugin = { "pretty", "html:target/cucumber-reports" },
 		 monochrome = true,

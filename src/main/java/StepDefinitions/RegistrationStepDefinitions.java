@@ -16,24 +16,24 @@ public class RegistrationStepDefinitions {
 		registrationSteps.launchApplication();
 	}
 
-	@When("I click home link")
+	@When("I click MyAccount Icon")
 	public void iClickHomeLink() throws Throwable {
-		registrationSteps.clickHomeLink();
+		registrationSteps.clickMyAccount();
 	}
 
-	@When("I click Register link")
+	@When("I click Create an Account link")
 	public void iClickRegisterLink() throws Throwable {
-		registrationSteps.clickRegister();
+		registrationSteps.clickCreateAnAccount();
 	}
 
-	@When("I enter Name(.*) Company(.*) Email(.*) Password(.*) Confirm Password(.*)")
-	public void iEnterRegistrationDetails(String Name, String Company, String Email, String Password,
+	@When("I enter FirstName(.*) LastName(.*) Email(.*) Password(.*) Confirm Password(.*)")
+	public void iEnterRegistrationDetails(String Firstname, String Lastname, String Email, String Password,
 			String CnfPassword) throws Throwable {
-		registrationSteps.enterRegistrationDetails(Name, Company, Email, Password, CnfPassword);
+		registrationSteps.enterRegistrationDetails(Firstname, Lastname, Email, Password, CnfPassword);
 	}
 
-	@Then("I should see Login page(.*)")
-	public void iShouldSeeLoginPage(String verifyRegistration) throws Throwable {
+	@Then("I should see error message(.*)")
+	public void iShouldSeeErrorPage(String verifyRegistration) throws Throwable {
 		registrationSteps.verifyRegistration(verifyRegistration);
 	}
 

@@ -19,29 +19,30 @@ public class RegistrationSteps {
 	}
 
 	@Step
-	public void clickHomeLink() {
-		homePage.clickHomeLink();
+	public void clickMyAccount() {
+		homePage.clickMyAccountLink();
 	}
 
 	@Step
-	public void clickRegister() {
-		loginPage.clickRegisterLink();
+	public void clickCreateAnAccount() {
+		loginPage.clickCreateAnAccountLink();
 	}
 
 	@Step
-	public void enterRegistrationDetails(String Name, String Company, String Email, String Password,
+	public void enterRegistrationDetails(String Firstname, String Lastname, String Email, String Password,
 			String CnfPassword) {
 		String RanEmail = (RandomStringUtils.randomAlphanumeric(4) + Email).toLowerCase();
-		registrationPage.enterName(Name);
-		registrationPage.enterCompany(Company);
+		registrationPage.enterFirstname(Firstname);
+		registrationPage.enterLastname(Lastname);
 		registrationPage.enterEmail(RanEmail);
 		registrationPage.enterPassword(Password);
 		registrationPage.enterCnfPassword(CnfPassword);
-		registrationPage.ClickRegisterButton();
+		//registrationPage.CheckSignUp();
+		//registrationPage.ClickRegisterSubmitButton();
 	}
 	
 	public void verifyRegistration(String verifyRegistration) {
-		Assert.assertEquals(verifyRegistration, loginPage.verifyRegistration());
+		Assert.assertEquals(verifyRegistration, registrationPage.verifyRegistration());
 	}
 
 }

@@ -2,19 +2,18 @@ package StepFiles;
 
 import org.junit.Assert;
 import Pages.LoginPage;
-import Pages.MyAccountPage;
+import Pages.MyAccPage;
 import net.thucydides.core.annotations.Step;
 
 public class LoginSteps {
 
 	LoginPage loginPage;
-	MyAccountPage myAccountPage;
+	MyAccPage myAccountPage;
 
 	@Step
 	public void enterEmail_Password(String email, String password) {
 		loginPage.enterEmail(email);
 		loginPage.enterPassword(password);
-		loginPage.checkRememberMe();
 		loginPage.ClickLoginButton();
 
 	}
@@ -27,6 +26,7 @@ public class LoginSteps {
 
 	@Step
 	public void clickLogout() {
+		myAccountPage.hoverMyAccIcon();
 		myAccountPage.clickLogout();
 
 	}
